@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    
+    <title>Log In</title>
+
+    <!-- style css -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+</head>
+
+<body>
+    <div class="form-wrapper">
+        <h1>Log In</h1>
+        <form method = "post">
+            {% csrf_token %}
+
+        {% if messages %}
+            {% for msg in messages %}
+                <h2>Hi</h2>
+                <div class="dialogbox">
+                    <div class="body">
+                    <span class="tip tip-left"></span>
+                    <div class="message">
+                        <span>{{ msg }}</span>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="form-item">
+            <label for="Username"></label>
+            <input type="text" name="username" required="required" placeholder="Username">
+        </div>
+        <div class="form-item">
+            <label for="password"></label>
+            <input type="password" name="password" required="required" placeholder="Password">
+        </div>
+        <div class="button-panel">
+            <input type="submit" class="button" title="Log In" value="Log In">
+        </div>
+        </form>
+        <div class="form-footer">
+        <p><a href="{% url 'signup' %}">Create an account Sign Up</a></p>
+        <p><a href="{% url 'forget' %}">Forgot password?</a></p>
+        </div>
+    </div>
+</body>
+</html>

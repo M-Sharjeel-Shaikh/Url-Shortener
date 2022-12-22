@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    
+    <title>Url Shortener Dashboard</title>
+
+    <!-- style css -->
+    <link rel="stylesheet" href="/static/css/style.css">  
+</head>
+    
+<body>
+    <div class="form-wrapper">
+        <h1>Dashboard</h1>
+        <form method = "post" action="{% url 'generate' %}">
+        {% if error %}
+            <span>{{ error }}</span>                   
+        {% endif %}            
+
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="dialogbox">
+                    <div class="body">
+                    <span class="tip tip-left"></span>
+                    <div class="message">
+                        <span>{{ msg }}</span>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+            {% csrf_token %}
+        <div class="form-item">
+            <h3>Enter Your URL Here</h3>
+            <label for="Paste Your Url Here"></label>
+            <input type="text" name="original" placeholder="Url">
+        </div>
+        <div class="form-item">
+            <h3>Enter Six character For URL (Optional) </h3>
+            <label for="Random Six Charater"></label>
+            <input type="text" name="short" placeholder="Enter Six Word Here" >
+        </div>
+        <div class="button-panel">
+            <a href="{% url 'generate' %}"><input type="submit" class="button" title="Generate" value="Generate" ></a>
+        </div>
+        <div class="form-item">
+            <h3>Short Generated Url</h3>
+            <label for="Generated URL"></label>
+            <input type="text" name="generated" placeholder="Generated_url" value = {{ short }}>
+        </div>
+        <div class="button-panel">
+            <a href="{% url 'dash' %}"><input type="submit" class="button" title="My Urls" value="My Urls" ></a>
+        </div>
+        <div class="form-footer">
+            <div class="button-panel">
+                <a href="{% url 'home' %}"><h3>Go Back</h3></a>
+            </div>
+        </div>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    
+    <title>Reset Password</title>
+
+    <!-- style css -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+</head>
+    
+<body>
+    <div class="form-wrapper">
+        <h1>Enter Register Email</h1>
+        <form method = "post">
+            {% csrf_token %}
+
+        {% if messages %}
+            {% for msg in messages %}
+                <div class="dialogbox">
+                    <div class="body">
+                    <span class="tip tip-left"></span>
+                    <div class="message">
+                        <span>{{ msg }}</span>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="form-item">
+            <label for="Email"></label>
+            <input type="email" name="email" required="required" placeholder="Register Email">
+        </div>
+        <div class="button-panel">
+            <input type="submit" class="button" title="Continue" value="Continue">
+        </div>
+        </form>
+    </div>
+</body>
+</html>
